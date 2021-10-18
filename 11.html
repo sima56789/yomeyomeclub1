@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/11.css">
+</head>
+<body>
+        <!--ロード中に表示されるコンテンツ--->
+    <div id="loader-bg">
+        <div id="loader">
+          <img class="loading" src="images/loading!!.gif" width="300px" height="300px" alt="Now Loading..." />
+          <p>　　　　Now Loading...</p>
+        </div>
+    </div>
+    <div id="wrap">
+        <!--ロード後に表示させたい内容--->
+        <div class="slide">
+            <img  class="i" src="images/niki1.jpeg" alt="">
+            <img  class="i" src="images/niki2.jpeg" alt="">
+            <img   class="i"src="images/niki3.jpeg" alt="">
+            <img class="looo" src="images/EZO Radio-2.png" >
+        </div>
+
+        
+
+    
+        <div class="message-wrapper">
+            <div class="message">
+                <h1>ヨメヨメクラブとは？</h1>
+                <p>パートナーとの円満な日常が続くように私たちが出来る事とは？<br>感謝の気持ちを常に持つ事で大切な人が幸せになる日常づくりを提案。</p>
+            </div>
+        </div>
+
+        <!--パララックス部分--->
+     
+    
+        <div class="content-wrapper"> 
+            <div class="content">
+                <div class="content-icon">
+                    <img src="images/sample3.png">
+                    <p>大切な人へ贈り物</p>
+                </div>
+                <p class="txt-contents">----------------------------------------------------------------------------------------------------------</p>
+            </div>
+            <div class="content">
+                <div class="content-icon">
+                    <img src="images/sample3.png">
+                    <p>未来に向けて「出来る事」</p>
+                </div>
+                <p class="txt-contents">----------------------------------------------------------------------------------------------------------------------------------------------</p>
+            </div>
+            <div class="content">
+                <div class="content-icon">
+                    <img src="images/sample3.png  ">
+                    <p>一緒に過ごす「あそぶば」</p>
+                </div>
+                <p class="txt-contents">---------------------------------------------------------------------------------------------------------------------------------</p>
+            </div>
+
+        </div>
+       
+    
+        <footer>
+            <div class="footer-logo"><img src="images/sample2.gif"></div>
+            <div class="footer-list">
+                <ul>
+                    <li>----------------</li>
+                    <li>----------------</li>
+                    <li>お問い合わせ</li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+
+
+    <!---スプラッシュJQuery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+$(function() {
+  var h = $(window).height();
+  
+  $('#wrap').css('display','none');
+  $('#loader-bg ,#loader').height(h).css('display','block');
+});
+  
+$(window).load(function () { //全ての読み込みが完了したら実行
+  $('#loader-bg').delay(1500).fadeOut(1000);
+  $('#loader').delay(1000).fadeOut(1000000);
+  $('#wrap').css('display', 'block');
+});
+  
+//10秒たったら強制的にロード画面を非表示
+$(function(){
+  setTimeout('stopload()',10000);
+});
+  
+function stopload(){
+  $('#wrap').css('display','block');
+  $('#loader-bg').delay(900).fadeOut(800);
+  $('#loader').delay(600).fadeOut(300);
+}
+</script>
+
+<!--パララックスJquery-->
+<script>
+
+    if ($.cookie('WelcomeLayer') != 'isOpen') {
+        $.when(
+          $('.WelcomeLayer').show()
+        )
+        .done(function(){
+          setTimeout(function(){
+            $('.WelcomeLayer').fadeOut(500);
+          },2000),
+          $('main').show(),
+          $.cookie('WelcomeLayer', 'isOpen')
+        })
+        .fail(function() {
+          console.log('error');
+        });
+      } else {
+        $('main').show();
+      }
+    
+    </script>
+    
+
+</body>
+</html>
